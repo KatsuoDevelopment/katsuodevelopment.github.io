@@ -3,32 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lois Miranda</title>
+    <title>Lois Miranda & Codes Police</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex justify-center items-center h-screen bg-gray-100">
-    <div class="bg-white p-6 rounded-lg shadow-md w-96">
-        <h2 class="text-xl font-bold mb-4">Génération de la loi miranda</h2>
-        <input id="playerName" type="text" placeholder="Nom du joueur" class="w-full p-2 border rounded mb-4">
+<body class="flex flex-col items-center bg-gray-100 p-6">
+    <div class="flex gap-6 w-full max-w-6xl">
+        <div class="bg-white p-6 rounded-lg shadow-md w-1/3">
+            <h2 class="text-xl font-bold mb-4">Fréquence Radio</h2>
+            <ul class="list-disc pl-4 text-gray-700">
+                <li>13 : Opération Commune</li>
+                <li>15 : BSCO</li>
+                <li>20 : LSPD</li>
+                <li>23 : Interrogatoire</li>
+            </ul>
+            <h2 class="text-xl font-bold mb-4">Codes Patrouille</h2>
+            <ul class="list-disc pl-4 text-gray-700">
+                <li>Lincoln : Seul en véhicule</li>
+                <li>Adam : Patrouille à deux</li>
+                <li>Tango : Patrouille à trois</li>
+                <li>X-Ray : Patrouille à quatre</li>
+                <li>Mary : Patrouille motorisée</li>
+                <li>Henry : Patrouille Héliportée</li>
+                <li>David : Patrouille SWAT</li>
+                <li>Sierra : Patrouille Rapide</li>
+                <li>Super Sierra : Patrouille Rapide +</li>
+                <li>Roméo : Patrouille banalisée</li>
+                <li>Victor : Patrouille Vélo</li>
+                <li>William : Véhicule GIU/SCU/Banalisée</li>
+                <li>Hubert : Patrouille nautique</li>
+            </ul>
+            
+            <h2 class="text-xl font-bold mb-4">Codes Alphabétiques</h2>
+            <ul class="grid grid-cols-2 gap-2 text-gray-700">
+                <li>A - Alpha</li>
+                <li>B - Bravo</li>
+                <li>C - Charlie</li>
+                <li>D - Delta</li>
+                <li>E - Echo</li>
+                <li>F - Foxtrot</li>
+                <li>G - Golf</li>
+                <li>H - Hotel</li>
+                <li>I - India</li>
+                <li>J - Juliet</li>
+                <li>K - Kilo</li>
+                <li>L - Lima</li>
+                <li>M - Mike</li>
+                <li>N - November</li>
+                <li>O - Oscar</li>
+                <li>P - Papa</li>
+                <li>Q - Quebec</li>
+                <li>R - Romeo</li>
+                <li>S - Sierra</li>
+                <li>T - Tango</li>
+                <li>U - Uniform</li>
+                <li>V - Victor</li>
+                <li>W - Whiskey</li>
+                <li>X - X-ray</li>
+                <li>Y - Yankee</li>
+                <li>Z - Zulu</li>
+            </ul>
+        </div>
         
-        <label class="block mb-2">Genre :</label>
-        <select id="gender" class="w-full p-2 border rounded mb-4">
-            <option value="Monsieur">Monsieur</option>
-            <option value="Madame">Madame</option>
-        </select>
+        <!-- Informations Joueur -->
+        <div class="bg-white p-6 rounded-lg shadow-md w-1/3">
+            <h2 class="text-xl font-bold mb-4">Informations Joueur</h2>
+            <input id="playerName" type="text" placeholder="Nom du joueur" class="w-full p-2 border rounded mb-4">
+            
+            <label class="block mb-2">Genre :</label>
+            <select id="gender" class="w-full p-2 border rounded mb-4">
+                <option value="Monsieur">Monsieur</option>
+                <option value="Madame">Madame</option>
+            </select>
+            
+            <label class="block mb-2">Délit :</label>
+            <select id="offense" class="w-full p-2 border rounded mb-4">
+                <option value="délit mineur">Délit mineur</option>
+                <option value="délit majeur">Délit majeur</option>
+                <option value="crime">Crime</option>
+            </select>
+            
+            <button onclick="generateMiranda()" class="w-full bg-green-500 text-white p-2 rounded mb-2">Appliquer</button>
+            <button onclick="resetForm()" class="w-full bg-gray-500 text-white p-2 rounded">Reset</button>
+            <div id="mirandaText" class="mt-4 text-sm text-gray-700 whitespace-pre-line"></div>
+        </div>
         
-        <label class="block mb-2">Délit :</label>
-        <select id="offense" class="w-full p-2 border rounded mb-4">
-            <option value="délit mineur">Délit mineur</option>
-            <option value="délit majeur">Délit majeur</option>
-            <option value="crime">Crime</option>
-        </select>
-        
-        <button onclick="generateMiranda()" class="w-full bg-green-500 text-white p-2 rounded mb-2">Appliquer</button>
-        <button onclick="resetForm()" class="w-full bg-gray-500 text-white p-2 rounded">Reset</button>
-        <div id="mirandaText" class="mt-4 text-sm text-gray-700 whitespace-pre-line"></div>
-    </div>
+        <!-- Codes Police -->
+        <div class="bg-white p-6 rounded-lg shadow-md w-1/3">
+            <h2 class="text-xl font-bold mb-4">Codes Police</h2>
+            <h3 class="font-semibold mt-4">Codes</h3>
+            <ul class="list-disc pl-4 text-gray-700">
+                <li>Code 1 : Rien</li>
+                <li>Code 2 : Gyrophare</li>
+                <li>Code 3 : Gyro + Sirène</li>
+                <li>Code 4 : Fin d'intervention</li>
+                <li>Code 6 : Investigation</li>
+            </ul>
+            <!-- Codes de Service et de Position -->
+            <h3 class="font-semibold mt-4">Codes de Service et de Position</h3>
+            <ul class="list-disc pl-4 text-gray-700">
+                <li>10-6 : Pause de service</li>
+                <li>10-7 : Début de service</li>
+                <li>10-8 : Fin de service</li>
+                <li>10-13 : Reprise de patrouille</li>
+                <li>10-17 : En direction de</li>
+                <li>10-18 : En direction de l’hôpital</li>
+                <li>10-20 : Position actuelle</li>
+            </ul>
+            
+            <!-- Codes d'Interrogation et d'Enquête -->
+            <h3 class="font-semibold mt-4">Codes d'Interrogation et d'Enquête</h3>
+            <ul class="list-disc pl-4 text-gray-700">
+                <li>10-9 : Interrogatoire en cours</li>
+                <li>10-4 : Message reçu/Affirmatif</li>
+                <li>10-5 : Négatif</li>
+            </ul>
+            
+            <!-- Codes d'Urgence et de Sécurité -->
+            <h3 class="font-semibold mt-4">Codes d'Urgence et de Sécurité</h3>
+            <ul class="list-disc pl-4 text-gray-700">
+                <li>10-50 : Accident de la route</li>
+                <li>10-52 : Demande d’EMS</li>
+                <li>10-90 : Cambriolage en cours</li>
+                <li>10-92 : Vente de drogues</li>
+                <li>10-80 : Prise d’otage en cours</li>
+                <li>10-71 : Fusillade/Tir</li>
+                <li>10-75 : Sécurisation de zone</li>
+            </ul>
 
+            <!-- Codes de Silence et de Contrôle -->
+            <h3 class="font-semibold mt-4">Codes de Silence et de Contrôle</h3>
+            <ul class="list-disc pl-4 text-gray-700">
+                <li>10-81 : Silence radio</li>
+                <li>10-300 : Autorisation d’abattre</li>
+            </ul>
+
+            <!-- Codes Humoristiques ou Abusifs -->
+            <h3 class="font-semibold mt-4">Codes Humoristiques ou Abusifs</h3>
+            <ul class="list-disc pl-4 text-gray-700">
+                <li>10-800 : T.L.G express (troller)</li>
+            </ul>
+        </div>
+    </div>
     <script>
         function formatDate() {
             const date = new Date();
