@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lois Miranda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center items-center h-screen bg-gray-100">
+    <div class="bg-white p-6 rounded-lg shadow-md w-96">
+        <h2 class="text-xl font-bold mb-4">Génération de la loi miranda</h2>
+        <input id="playerName" type="text" placeholder="Nom du joueur" class="w-full p-2 border rounded mb-4">
+        
+        <label class="block mb-2">Genre :</label>
+        <select id="gender" class="w-full p-2 border rounded mb-4">
+            <option value="Monsieur">Monsieur</option>
+            <option value="Madame">Madame</option>
+        </select>
+        
+        <label class="block mb-2">Délit :</label>
+        <select id="offense" class="w-full p-2 border rounded mb-4">
+            <option value="délit mineur">Délit mineur</option>
+            <option value="délit majeur">Délit majeur</option>
+            <option value="crime">Crime</option>
+        </select>
+        
+        <button onclick="generateMiranda()" class="w-full bg-green-500 text-white p-2 rounded mb-2">Appliquer</button>
+        <button onclick="resetForm()" class="w-full bg-gray-500 text-white p-2 rounded">Reset</button>
+        <div id="mirandaText" class="mt-4 text-sm text-gray-700 whitespace-pre-line"></div>
+    </div>
+
+    <script>
+        function formatDate() {
+            const date = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = date.toLocaleDateString('fr-FR', options);
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            return `${formattedDate}, ${hours}h${minutes}`;
+        }
+        
+        function generateMiranda() {
+            const playerName = document.getElementById("playerName").value.trim();
+            const offense = document.getElementById("offense").value;
+            const gender = document.getElementById("gender").value;
+            const mirandaText = document.getElementById("mirandaText");
+            
+            if (!playerName) {
+                mirandaText.innerText = "Veuillez entrer un nom de joueur.";
+                return;
+            }
+            
+            const today = formatDate();
+            
+            const miranda = `${gender} ${playerName}, nous sommes le ${today}.
+            
+Vous êtes en état d'arrestation pour : ${offense}.
+            
+Vous avez le droit de garder le silence. 
+Si vous renoncez à ce droit, tout ce que vous direz pourra être utilisé contre vous devant une cour de justice.
+            
+La ville ne disposant pas de service d'avocat, vous pouvez vous défendre vous-même.
+            
+Pendant votre détention, vous avez le droit à :
+- des soins médicaux si nécessaire,
+- de la nourriture,
+- des boissons,
+- un appel téléphonique d'une minute maximum.
+            
+**Avez-vous bien compris vos droits ?** (La réponse doit être claire et audible)
+**Souhaitez-vous exercer vos droits ?** (La réponse est obligatoire).`;
+            
+            mirandaText.innerText = miranda;
+        }
+
+        function resetForm() {
+            document.getElementById("playerName").value = "";
+            document.getElementById("gender").value = "Monsieur";
+            document.getElementById("offense").value = "délit mineur";
+            document.getElementById("mirandaText").innerText = "";
+        }
+    </script>
+</body>
+</html>
